@@ -1,17 +1,21 @@
-name: Skip draft PR
+name: Efficient PR job
 
 on:
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
 
+# Cancel any previous runs of this workflow for the same PR.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   my-job:
     runs-on: ubuntu-latest
+    # Do not run this job if the PR is a draft.
     if: "!github.event.pull_request.draft"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run tests
-        run: |
-          sleep 10
-          echo "Done! 👍"
+        run:  sleep 10 && echo "Done! 👍"
