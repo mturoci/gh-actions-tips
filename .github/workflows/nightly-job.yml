@@ -13,6 +13,9 @@ jobs:
         yesterday-commit-count: ${{ steps.get-new-commits.outputs.YESTERDAY_COMMIT_COUNT }}
       steps:
         - uses: actions/checkout@v3
+          with:
+              # Do not check out the full repo. All we care about is the number of commits.
+              sparse-checkout: .
         - id: get-new-commits
           # Get the number of commits in the last 24 hours and save it to an output variable.
           run: echo "YESTERDAY_COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_OUTPUT
