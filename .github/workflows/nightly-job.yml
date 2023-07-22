@@ -2,8 +2,8 @@ name: Efficient scheduled job
 
 on:
   schedule:
-    # Run every 5 minutes. In real-world, you probably want to run this once a day.
-    - cron: '*/5 * * * *'
+    # Run every day at midnight.
+    - cron: '0 0 * * *'
 
 jobs:
   check-last-commit:
