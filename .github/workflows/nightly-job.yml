@@ -1,4 +1,4 @@
-name: Scheduled Action
+name: Efficient scheduled job
 
 on:
   schedule:
