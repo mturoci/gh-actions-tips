@@ -1,0 +1,17 @@
+name: My Action
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    if: "!github.event.pull_request.draft"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          sleep 10
+          echo "Done! 👍"
