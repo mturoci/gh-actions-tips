@@ -12,7 +12,7 @@ jobs:
       outputs:
         yesterday-commit-count: ${{ steps.get-new-commits.outputs.YESTERDAY_COMMIT_COUNT }}
       steps:
-        - uses: actions/checkout@v2
+        - uses: actions/checkout@v3
         - id: get-new-commits
           # Get the number of commits in the last 24 hours and save it to an output variable.
           run: echo "YESTERDAY_COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_OUTPUT
